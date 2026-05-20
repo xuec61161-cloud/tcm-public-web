@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="杏林居 - 中医养生科普平台，传承中医智慧，守护健康生活">
+    <meta name="theme-color" content="#4a6741">
+    <title>杏林居 · 中医养生</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav" id="nav">
+        <div class="nav-container">
+            <a href="#" class="nav-logo">杏林居</a>
+            <button class="nav-toggle" id="navToggle" aria-label="菜单">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#videos" class="nav-link">视频合集</a></li>
+                <li><a href="#knowledge" class="nav-link">知识宝库</a></li>
+                <li><a href="#health" class="nav-link">日常养生</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">杏林春暖<span class="hero-subtitle">· 中医养生</span></h1>
+            <p class="hero-desc">传承千年中医智慧，以自然之道养护身心。<br>在这里，用最朴素的语言，讲最实用的中医知识。</p>
+        </div>
+        <div class="hero-scroll">
+            <span>向下浏览</span>
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </section>
+
+    <!-- Video Collection Section -->
+    <section id="videos" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">数字人视频合集</h2>
+                <p class="section-subtitle">中医科普口播视频 · 持续更新中</p>
+            </div>
+            <div class="video-grid" id="videoGrid">
+                <!-- Videos will be loaded from data.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Knowledge Section -->
+    <section id="knowledge" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">中医知识宝库</h2>
+                <p class="section-subtitle">通俗易懂的中医基础理论</p>
+            </div>
+            <div class="knowledge-grid" id="knowledgeGrid">
+                <!-- Knowledge cards will be loaded from data.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Health Tips Section -->
+    <section id="health" class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">日常养生科普</h2>
+                <p class="section-subtitle">融入生活的养生小贴士</p>
+            </div>
+            <div class="health-tips" id="healthTips">
+                <!-- Health tips will be loaded from data.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>杏林居</h3>
+                    <p>传承中医智慧 · 守护健康生活</p>
+                </div>
+                <div class="footer-links">
+                    <h4>快速导航</h4>
+                    <ul>
+                        <li><a href="#videos">视频合集</a></li>
+                        <li><a href="#knowledge">知识宝库</a></li>
+                        <li><a href="#health">日常养生</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 杏林居 · 内容仅供科普参考，不构成医疗建议</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal for video playback -->
+    <div class="modal" id="videoModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <div class="modal-video-wrapper">
+                <video id="modalVideo" controls playsinline preload="metadata"></video>
+            </div>
+            <div class="modal-info" id="modalInfo">
+                <h3 id="modalTitle"></h3>
+                <p id="modalDesc"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/data.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
