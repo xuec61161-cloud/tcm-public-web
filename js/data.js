@@ -62,6 +62,12 @@ const siteData = {
             desc: "联合研发中医药产品介绍视频",
             bvid: "BV1x5Lt6hEmS",
             embedUrl: "//player.bilibili.com/player.html?bvid=BV1x5Lt6hEmS&autoplay=0"
+        },
+        {
+            title: "联合研发产品介绍",
+            desc: "联合研发产品介绍视频",
+            bvid: "BV1wSLh6NEkg",
+            embedUrl: "//player.bilibili.com/player.html?bvid=BV1wSLh6NEkg&autoplay=0"
         }
     ],
 
