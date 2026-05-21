@@ -7,51 +7,19 @@ const siteData = {
     videos: [
         {
             id: 1,
-            title: "体内湿气不除，补什么都白搭",
-            desc: "祛湿是养生的第一步，学会这些方法，轻松排出体内湿气。",
-            file: "videos/qu-shi.mp4",
-            thumb: "images/thumb-qu-shi.jpg",
-            duration: "3:20"
+            title: "夏天祛湿正当时",
+            desc: "数字人讲解中医养生知识，通俗易懂。",
+            bvid: "BV1eGLm6eEY1",
+            isBilibili: true,
+            thumb: "images/thumb-person.jpg"
         },
         {
             id: 2,
-            title: "脾胃不好，吃再多补品也白费",
-            desc: "脾胃是后天之本，养好脾胃才能吸收营养、气血充足。",
-            file: "videos/jian-pi.mp4",
-            thumb: "images/thumb-jian-pi.jpg",
-            duration: "3:45"
-        },
-        {
-            id: 3,
-            title: "睡不好的人，身体迟早出问题",
-            desc: "失眠多梦、半夜易醒？中医三个方法帮你找回好睡眠。",
-            file: "videos/sleep.mp4",
-            thumb: "images/thumb-sleep.jpg",
-            duration: "4:00"
-        },
-        {
-            id: 4,
-            title: "顺应四季，才是最高级的养生",
-            desc: "春生夏长秋收冬藏，顺时养生才是最高明的健康之道。",
-            file: "videos/seasonal.mp4",
-            thumb: "images/thumb-seasonal.jpg",
-            duration: "4:30"
-        },
-        {
-            id: 5,
-            title: "五个小习惯让你少生病",
-            desc: "每天坚持五个养生小习惯，体质越来越好。",
-            file: "videos/five-habits.mp4",
-            thumb: "images/thumb-habits.jpg",
-            duration: "3:15"
-        },
-        {
-            id: 6,
-            title: "按一按这些穴位，舒服一整天",
-            desc: "常用穴位按摩指南，头痛、胃痛、疲劳都能缓解。",
-            file: "videos/acupoints.mp4",
-            thumb: "images/thumb-acupoints.jpg",
-            duration: "5:00"
+            title: "脾胃虚弱早知道",
+            desc: "数字人视频作品。",
+            file: "videos/5月20日 (1).mp4",
+            thumb: "images/thumb-person.jpg",
+            duration: ""
         }
     ],
 
@@ -79,12 +47,21 @@ const siteData = {
         {
             icon: "🌡",
             title: "八纲辨证",
-            text: "表里、寒热、虚实、阴阳，是中医诊断的八个纲领。看病的核心就是"辨证论治"——先搞清楚病在哪、什么性质、身体状态如何，再决定用什么方法调理。"
+            text: "表里、寒热、虚实、阴阳，是中医诊断的八个纲领。看病的核心就是「辨证论治」——先搞清楚病在哪、什么性质、身体状态如何，再决定用什么方法调理。"
         },
         {
             icon: "🍵",
             title: "药食同源",
             text: "很多食物本身就是药材。生姜驱寒、大枣补血、山药健脾、薏米祛湿、莲子安神、菊花清火。日常饮食中用好吃药食同源的食物，既安全又有效。"
+        }
+    ],
+
+    products: [
+        {
+            title: "联合研发产品介绍",
+            desc: "联合研发中医药产品介绍视频",
+            bvid: "BV1x5Lt6hEmS",
+            embedUrl: "//player.bilibili.com/player.html?bvid=BV1x5Lt6hEmS&autoplay=0"
         }
     ],
 
@@ -107,17 +84,17 @@ const siteData = {
         {
             tag: "运动",
             title: "饭后百步走，活到九十九",
-            text: "饭后不要马上坐下或躺下，慢走15-20分钟助消化。注意是"慢走"不是"快走"，速度以不气喘为宜。脾胃不好的人尤其推荐这个习惯。"
+            text: "饭后不要马上坐下或躺下，慢走15-20分钟助消化。注意是「慢走」不是「快走」，速度以不气喘为宜。脾胃不好的人尤其推荐这个习惯。"
         },
         {
             tag: "情志",
             title: "少生气就是最好的养生",
-            text: "中医讲"怒伤肝、喜伤心、思伤脾、忧伤肺、恐伤肾"。情绪对身体的影响非常大。生气时肝气郁结，长期情绪不佳会导致各种问题。学会调节情绪，比吃任何补品都重要。"
+            text: "中医讲「怒伤肝、喜伤心、思伤脾、忧伤肺、恐伤肾」。情绪对身体的影响非常大。生气时肝气郁结，长期情绪不佳会导致各种问题。学会调节情绪，比吃任何补品都重要。"
         },
         {
             tag: "季节",
-            title: "春天要"捂"不要急着减衣",
-            text: "春天气温乍暖还寒，不要天一暖就急着脱厚衣服。所谓"春捂秋冻"，春天适当多穿一段时间，帮助身体适应气温变化，不容易感冒。尤其要注意背部、腹部和脚部的保暖。"
+            title: "春天要「捂」不要急着减衣",
+            text: "春天气温乍暖还寒，不要天一暖就急着脱厚衣服。所谓「春捂秋冻」，春天适当多穿一段时间，帮助身体适应气温变化，不容易感冒。尤其要注意背部、腹部和脚部的保暖。"
         },
         {
             tag: "饮食",

@@ -20,6 +20,7 @@
             </button>
             <ul class="nav-menu" id="navMenu">
                 <li><a href="#videos" class="nav-link">视频合集</a></li>
+                <li><a href="#products" class="nav-link">联合研发产品</a></li>
                 <li><a href="#knowledge" class="nav-link">知识宝库</a></li>
                 <li><a href="#health" class="nav-link">日常养生</a></li>
             </ul>
@@ -47,6 +48,19 @@
             </div>
             <div class="video-grid" id="videoGrid">
                 <!-- Videos will be loaded from data.js -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Joint R&D Products Section -->
+    <section id="products" class="section section-alt">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">联合研发产品简介</h2>
+                <p class="section-subtitle">联合研发产品介绍视频 · 持续更新中</p>
+            </div>
+            <div class="product-grid" id="productGrid">
+                <!-- Products will be loaded from data.js -->
             </div>
         </div>
     </section>
@@ -89,6 +103,7 @@
                     <h4>快速导航</h4>
                     <ul>
                         <li><a href="#videos">视频合集</a></li>
+                        <li><a href="#products">联合研发产品</a></li>
                         <li><a href="#knowledge">知识宝库</a></li>
                         <li><a href="#health">日常养生</a></li>
                     </ul>
@@ -107,6 +122,7 @@
             <button class="modal-close" id="modalClose">&times;</button>
             <div class="modal-video-wrapper">
                 <video id="modalVideo" controls playsinline preload="metadata"></video>
+                <iframe id="modalIframe" style="display:none;width:100%;height:100%;border:none;" allowfullscreen></iframe>
             </div>
             <div class="modal-info" id="modalInfo">
                 <h3 id="modalTitle"></h3>

@@ -54,6 +54,7 @@ function initNavigation() {
 /* ---- Render Content ---- */
 function renderContent() {
     renderVideos();
+    renderProducts();
     renderKnowledge();
     renderHealthTips();
 }
@@ -63,6 +64,7 @@ function renderVideos() {
     if (!grid || !siteData.videos) return;
 
     grid.innerHTML = siteData.videos.map(function(video) {
+        // 所有视频都显示封面图
         return `
             <div class="video-card fade-in" data-video-id="${video.id}">
                 <div class="video-card-thumb">
@@ -79,12 +81,33 @@ function renderVideos() {
     }).join('');
 
     // Bind click events
-    grid.querySelectorAll('.video-card').forEach(function(card) {
+    grid.querySelectorAll('.video-card[data-video-id]').forEach(function(card) {
         card.addEventListener('click', function() {
             const id = parseInt(this.dataset.videoId);
             openVideoModal(id);
         });
     });
+}
+
+function renderProducts() {
+    var grid = document.getElementById('productGrid');
+    if (!grid || !siteData.products) return;
+
+    grid.innerHTML = siteData.products.map(function(product) {
+        return '<div class="product-card">' +
+            '<div class="product-video-wrapper">' +
+                '<iframe src="https://player.bilibili.com/player.html?bvid=' + product.bvid + '&autoplay=0&page=1&high_quality=1&danmaku=0" ' +
+                    'scrolling="no" border="0" frameborder="no" framespacing="0" ' +
+                    'allowfullscreen="true" loading="lazy" ' +
+                    'style="width:100%;height:100%;"></iframe>' +
+            '</div>' +
+            '<div class="product-card-body">' +
+                '<h3 class="product-card-title">' + product.title + '</h3>' +
+                '<p class="product-card-desc">' + product.desc + '</p>' +
+                '<a class="product-card-link" href="https://www.bilibili.com/video/' + product.bvid + '/" target="_blank" rel="noopener">在B站观看 ↗</a>' +
+            '</div>' +
+        '</div>';
+    }).join('');
 }
 
 function renderKnowledge() {
@@ -123,11 +146,15 @@ function initModal() {
     const overlay = document.getElementById('modalOverlay');
     const closeBtn = document.getElementById('modalClose');
     const video = document.getElementById('modalVideo');
+    const iframe = document.getElementById('modalIframe');
 
     function closeModal() {
         modal.classList.remove('active');
         video.pause();
         video.removeAttribute('src');
+        video.style.display = 'block';
+        iframe.style.display = 'none';
+        iframe.removeAttribute('src');
         document.body.style.overflow = '';
     }
 
@@ -145,6 +172,7 @@ function initModal() {
 function openVideoModal(videoId) {
     const modal = document.getElementById('videoModal');
     const video = document.getElementById('modalVideo');
+    const iframe = document.getElementById('modalIframe');
     const title = document.getElementById('modalTitle');
     const desc = document.getElementById('modalDesc');
 
@@ -154,17 +182,24 @@ function openVideoModal(videoId) {
     title.textContent = data.title;
     desc.textContent = data.desc;
 
-    // Set video source
-    video.setAttribute('src', data.file);
-
     // Show modal and prevent body scroll
     modal.classList.add('active');
     document.body.style.overflow = 'hidden';
 
-    // Auto play
-    video.play().catch(function() {
-        // Autoplay may be blocked, that's OK
-    });
+    if (data.isBilibili) {
+        // B站视频用iframe
+        video.style.display = 'none';
+        iframe.style.display = 'block';
+        iframe.setAttribute('src', 'https://player.bilibili.com/player.html?bvid=' + data.bvid + '&autoplay=0&page=1&high_quality=1&danmaku=0');
+    } else {
+        // 本地视频
+        video.style.display = 'block';
+        iframe.style.display = 'none';
+        video.setAttribute('src', data.file);
+        video.play().catch(function() {
+            // Autoplay may be blocked, that's OK
+        });
+    }
 }
 
 /* ---- Scroll Animations ---- */
