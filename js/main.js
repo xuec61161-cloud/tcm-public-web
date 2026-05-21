@@ -99,6 +99,7 @@ function renderProducts() {
                 '<iframe src="https://player.bilibili.com/player.html?bvid=' + product.bvid + '&autoplay=0&page=1&high_quality=1&danmaku=0" ' +
                     'scrolling="no" border="0" frameborder="no" framespacing="0" ' +
                     'allowfullscreen="true" loading="lazy" ' +
+                    'sandbox="allow-scripts allow-same-origin allow-popups allow-forms" ' +
                     'style="width:100%;height:100%;"></iframe>' +
             '</div>' +
             '<div class="product-card-body">' +
