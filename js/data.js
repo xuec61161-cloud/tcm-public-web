@@ -86,9 +86,8 @@ const siteData = {
         {
             title: "元气决产品介绍",
             desc: "联合研发产品介绍视频",
-            file: "videos/元气决产品介绍.mp4",
-            thumb: "images/thumb-person.jpg",
-            duration: "2:27"
+            bvid: "BV13aGv6HEGw",
+            embedUrl: "//player.bilibili.com/player.html?bvid=BV13aGv6HEGw&autoplay=0"
         }
     ],
 
