@@ -93,21 +93,36 @@ function renderProducts() {
     var grid = document.getElementById('productGrid');
     if (!grid || !siteData.products) return;
 
-    grid.innerHTML = siteData.products.map(function(product) {
-        return '<div class="product-card">' +
-            '<div class="product-video-wrapper">' +
-                '<iframe src="https://player.bilibili.com/player.html?bvid=' + product.bvid + '&autoplay=0&page=1&high_quality=1&danmaku=0" ' +
-                    'scrolling="no" border="0" frameborder="no" framespacing="0" ' +
-                    'allowfullscreen="true" loading="lazy" ' +
-                    'sandbox="allow-scripts allow-same-origin allow-popups allow-forms" ' +
-                    'style="width:100%;height:100%;"></iframe>' +
-            '</div>' +
-            '<div class="product-card-body">' +
-                '<h3 class="product-card-title">' + product.title + '</h3>' +
-                '<p class="product-card-desc">' + product.desc + '</p>' +
-                '<a class="product-card-link" href="https://www.bilibili.com/video/' + product.bvid + '/" target="_blank" rel="noopener">在B站观看 ↗</a>' +
-            '</div>' +
-        '</div>';
+    grid.innerHTML = siteData.products.map(function(product, index) {
+        // 本地视频使用video标签，B站视频使用iframe
+        if (product.file) {
+            return '<div class="product-card">' +
+                '<div class="product-video-wrapper">' +
+                    '<video controls preload="metadata" style="width:100%;height:100%;background:#000;">' +
+                        '<source src="' + product.file + '" type="video/mp4">' +
+                    '</video>' +
+                '</div>' +
+                '<div class="product-card-body">' +
+                    '<h3 class="product-card-title">' + product.title + '</h3>' +
+                    '<p class="product-card-desc">' + product.desc + '</p>' +
+                '</div>' +
+            '</div>';
+        } else {
+            return '<div class="product-card">' +
+                '<div class="product-video-wrapper">' +
+                    '<iframe src="https://player.bilibili.com/player.html?bvid=' + product.bvid + '&autoplay=0&page=1&high_quality=1&danmaku=0" ' +
+                        'scrolling="no" border="0" frameborder="no" framespacing="0" ' +
+                        'allowfullscreen="true" loading="lazy" ' +
+                        'sandbox="allow-scripts allow-same-origin allow-popups allow-forms" ' +
+                        'style="width:100%;height:100%;"></iframe>' +
+                '</div>' +
+                '<div class="product-card-body">' +
+                    '<h3 class="product-card-title">' + product.title + '</h3>' +
+                    '<p class="product-card-desc">' + product.desc + '</p>' +
+                    '<a class="product-card-link" href="https://www.bilibili.com/video/' + product.bvid + '/" target="_blank" rel="noopener">在B站观看 ↗</a>' +
+                '</div>' +
+            '</div>';
+        }
     }).join('');
 }
 
