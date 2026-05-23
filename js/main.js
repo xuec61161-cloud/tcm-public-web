@@ -55,6 +55,7 @@ function initNavigation() {
 function renderContent() {
     renderVideos();
     renderProducts();
+    renderRecipes();
     renderKnowledge();
     renderHealthTips();
 }
@@ -124,6 +125,53 @@ function renderProducts() {
             '</div>';
         }
     }).join('');
+}
+
+function renderRecipes() {
+    var grid = document.getElementById('recipeGrid');
+    if (!grid || !siteData.recipes) return;
+
+    grid.innerHTML = siteData.recipes.map(function(recipe) {
+        var ingredientsHtml = recipe.ingredients.map(function(item) {
+            return '<li>' + item + '</li>';
+        }).join('');
+
+        var stepsHtml = recipe.steps.map(function(step, i) {
+            return '<li><span class="recipe-step-num">' + (i + 1) + '</span>' + step + '</li>';
+        }).join('');
+
+        return '<div class="recipe-card fade-in">' +
+            '<div class="recipe-card-image">' +
+                '<span class="recipe-card-season">' + recipe.season + '</span>' +
+                '<img src="' + recipe.image + '" alt="' + recipe.title + '" onerror="this.src=\'images/thumb-person.jpg\'">' +
+            '</div>' +
+            '<div class="recipe-card-body">' +
+                '<h3 class="recipe-card-title">' + recipe.title + '</h3>' +
+                '<p class="recipe-card-desc">' + recipe.desc + '</p>' +
+                '<div class="recipe-card-content">' +
+                    '<div class="recipe-section">' +
+                        '<h4>🥣 食材</h4>' +
+                        '<ul class="recipe-ingredients">' + ingredientsHtml + '</ul>' +
+                    '</div>' +
+                    '<div class="recipe-section">' +
+                        '<h4>📝 做法</h4>' +
+                        '<ol class="recipe-steps">' + stepsHtml + '</ol>' +
+                    '</div>' +
+                    '<div class="recipe-section recipe-tips">' +
+                        '<h4>💡 小贴士</h4>' +
+                        '<p>' + recipe.tips + '</p>' +
+                    '</div>' +
+                '</div>' +
+            '</div>' +
+        '</div>';
+    }).join('');
+
+    // Re-observe new fade-in elements
+    document.querySelectorAll('#recipeGrid .fade-in').forEach(function(el) {
+        if (window.recipeObserver) {
+            window.recipeObserver.observe(el);
+        }
+    });
 }
 
 function renderKnowledge() {
