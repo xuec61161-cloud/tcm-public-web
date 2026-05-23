@@ -25,9 +25,9 @@ const siteData = {
             id: 3,
             title: "夏季最伤\"心\"",
             desc: "数字人讲解夏季养心知识，简单实用。",
-            file: "videos/5月23日 (1).mp4",
-            thumb: "images/thumb-person.jpg",
-            duration: ""
+            bvid: "BV1kiGB6LEWz",
+            isBilibili: true,
+            thumb: "images/thumb-person.jpg"
         }
     ],
 
