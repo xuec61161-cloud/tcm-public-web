@@ -20,6 +20,14 @@ const siteData = {
             file: "videos/5月20日 (1).mp4",
             thumb: "images/thumb-person.jpg",
             duration: ""
+        },
+        {
+            id: 3,
+            title: "夏季养心正当时",
+            desc: "数字人讲解夏季养心知识，简单实用。",
+            file: "videos/5月23日 (1).mp4",
+            thumb: "images/thumb-person.jpg",
+            duration: ""
         }
     ],
 
