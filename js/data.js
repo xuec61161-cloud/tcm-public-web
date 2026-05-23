@@ -17,9 +17,9 @@ const siteData = {
             id: 2,
             title: "脾胃虚弱早知道",
             desc: "数字人视频作品。",
-            file: "videos/5月20日 (1).mp4",
-            thumb: "images/thumb-person.jpg",
-            duration: ""
+            bvid: "BV1d3G66gEmm",
+            isBilibili: true,
+            thumb: "images/thumb-person.jpg"
         },
         {
             id: 3,
