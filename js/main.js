@@ -193,15 +193,138 @@ function renderHealthTips() {
     const container = document.getElementById('healthTips');
     if (!container || !siteData.healthTips) return;
 
-    container.innerHTML = siteData.healthTips.map(function(tip) {
-        return `
-            <div class="health-tip fade-in">
-                <span class="health-tip-tag">${tip.tag}</span>
-                <h3 class="health-tip-title">${tip.title}</h3>
-                <p class="health-tip-text">${tip.text}</p>
-            </div>
-        `;
-    }).join('');
+    // 按标签分组
+    var groups = {};
+    siteData.healthTips.forEach(function(tip, index) {
+        if (!groups[tip.tag]) {
+            groups[tip.tag] = [];
+        }
+        groups[tip.tag].push({
+            ...tip,
+            index: index
+        });
+    });
+
+    // 渲染目录形式
+    var html = '<div class="health-tips-directory">';
+    for (var tag in groups) {
+        html += '<div class="health-tips-group fade-in">';
+        html += '<h3 class="health-tips-group-title">' + tag + '</h3>';
+        html += '<ul class="health-tips-list">';
+        groups[tag].forEach(function(tip) {
+            html += '<li class="health-tips-item" data-tip-index="' + tip.index + '">';
+            html += '<span class="health-tips-item-arrow">›</span>';
+            html += '<span class="health-tips-item-title">' + tip.title + '</span>';
+            html += '</li>';
+        });
+        html += '</ul></div>';
+    }
+    html += '</div>';
+    container.innerHTML = html;
+
+    // 绑定点击事件
+    container.querySelectorAll('.health-tips-item').forEach(function(item) {
+        item.addEventListener('click', function() {
+            var index = parseInt(this.dataset.tipIndex);
+            openHealthTipModal(index);
+        });
+    });
+
+    // 重新观察动画元素
+    document.querySelectorAll('#healthTips .fade-in').forEach(function(el) {
+        if (window.healthObserver) {
+            window.healthObserver.observe(el);
+        }
+    });
+}
+
+function openHealthTipModal(index) {
+    var tip = siteData.healthTips[index];
+    if (!tip) return;
+
+    // 创建或获取弹窗
+    var modal = document.getElementById('healthTipModal');
+    if (!modal) {
+        modal = document.createElement('div');
+        modal.id = 'healthTipModal';
+        modal.className = 'health-tip-modal';
+        modal.innerHTML = '<div class="health-tip-modal-overlay"></div>' +
+            '<div class="health-tip-modal-content">' +
+                '<button class="health-tip-modal-close">&times;</button>' +
+                '<div class="health-tip-modal-header">' +
+                    '<span class="health-tip-modal-tag"></span>' +
+                    '<h3 class="health-tip-modal-title"></h3>' +
+                '</div>' +
+                '<div class="health-tip-modal-body">' +
+                    '<p class="health-tip-modal-text"></p>' +
+                '</div>' +
+                '<div class="health-tip-modal-nav">' +
+                    '<button class="health-tip-nav-prev" data-dir="prev">‹ 上一条</button>' +
+                    '<span class="health-tip-nav-count"></span>' +
+                    '<button class="health-tip-nav-next" data-dir="next">下一条 ›</button>' +
+                '</div>' +
+            '</div>';
+        document.body.appendChild(modal);
+
+        // 绑定关闭事件
+        modal.querySelector('.health-tip-modal-overlay').addEventListener('click', closeHealthTipModal);
+        modal.querySelector('.health-tip-modal-close').addEventListener('click', closeHealthTipModal);
+
+        // 绑定导航事件
+        modal.querySelector('.health-tip-nav-prev').addEventListener('click', function() {
+            navigateHealthTip(-1);
+        });
+        modal.querySelector('.health-tip-nav-next').addEventListener('click', function() {
+            navigateHealthTip(1);
+        });
+
+        // ESC关闭
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && modal.classList.contains('active')) {
+                closeHealthTipModal();
+            } else if (modal.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') navigateHealthTip(-1);
+                if (e.key === 'ArrowRight') navigateHealthTip(1);
+            }
+        });
+    }
+
+    // 更新内容
+    modal.querySelector('.health-tip-modal-tag').textContent = tip.tag;
+    modal.querySelector('.health-tip-modal-title').textContent = tip.title;
+    modal.querySelector('.health-tip-modal-text').textContent = tip.text;
+    modal.querySelector('.health-tip-nav-count').textContent = (index + 1) + ' / ' + siteData.healthTips.length;
+
+    // 更新导航按钮状态
+    modal.querySelector('.health-tip-nav-prev').disabled = index === 0;
+    modal.querySelector('.health-tip-nav-next').disabled = index === siteData.healthTips.length - 1;
+
+    // 存储当前索引
+    modal.dataset.currentIndex = index;
+
+    // 显示弹窗
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeHealthTipModal() {
+    var modal = document.getElementById('healthTipModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+}
+
+function navigateHealthTip(direction) {
+    var modal = document.getElementById('healthTipModal');
+    if (!modal) return;
+
+    var currentIndex = parseInt(modal.dataset.currentIndex) || 0;
+    var newIndex = currentIndex + direction;
+
+    if (newIndex >= 0 && newIndex < siteData.healthTips.length) {
+        openHealthTipModal(newIndex);
+    }
 }
 
 /* ---- Video Modal ---- */

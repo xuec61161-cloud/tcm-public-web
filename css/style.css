@@ -479,7 +479,213 @@ a:hover {
     line-height: 1.8;
 }
 
-/* ---- Health Tips ---- */
+/* ---- Health Tips Directory ---- */
+.health-tips-directory {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.health-tips-group {
+    background: white;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: 0 2px 12px var(--shadow);
+}
+
+.health-tips-group-title {
+    background: var(--green-pale);
+    color: var(--green-dark);
+    font-size: 1rem;
+    padding: 14px 20px;
+    margin: 0;
+    letter-spacing: 2px;
+    border-bottom: 1px solid rgba(74, 103, 65, 0.1);
+}
+
+.health-tips-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.health-tips-item {
+    display: flex;
+    align-items: center;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.health-tips-item:last-child {
+    border-bottom: none;
+}
+
+.health-tips-item:hover {
+    background: rgba(74, 103, 65, 0.04);
+}
+
+.health-tips-item:hover .health-tips-item-arrow {
+    color: var(--gold);
+    transform: translateX(3px);
+}
+
+.health-tips-item-arrow {
+    color: var(--green-light);
+    font-size: 1.2rem;
+    margin-right: 12px;
+    transition: var(--transition);
+}
+
+.health-tips-item-title {
+    font-size: 0.95rem;
+    color: var(--text-dark);
+    line-height: 1.5;
+}
+
+/* ---- Health Tip Modal ---- */
+.health-tip-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.health-tip-modal.active {
+    display: flex;
+}
+
+.health-tip-modal-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(4px);
+}
+
+.health-tip-modal-content {
+    position: relative;
+    background: white;
+    border-radius: var(--radius);
+    max-width: 480px;
+    width: 100%;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    animation: healthTipModalIn 0.3s ease;
+}
+
+@keyframes healthTipModalIn {
+    from { opacity: 0; transform: scale(0.95) translateY(10px); }
+    to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.health-tip-modal-close {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    background: none;
+    border: none;
+    font-size: 1.6rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: var(--transition);
+    z-index: 1;
+}
+
+.health-tip-modal-close:hover {
+    background: rgba(0, 0, 0, 0.05);
+    color: var(--text-dark);
+}
+
+.health-tip-modal-header {
+    padding: 24px 24px 16px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.health-tip-modal-tag {
+    display: inline-block;
+    padding: 3px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    background: var(--green-pale);
+    color: var(--green-dark);
+    margin-bottom: 10px;
+}
+
+.health-tip-modal-title {
+    font-size: 1.15rem;
+    color: var(--green-dark);
+    margin: 0;
+    line-height: 1.5;
+}
+
+.health-tip-modal-body {
+    padding: 20px 24px;
+}
+
+.health-tip-modal-text {
+    font-size: 0.95rem;
+    color: var(--text-muted);
+    line-height: 1.9;
+    margin: 0;
+}
+
+.health-tip-modal-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 24px;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 0 0 var(--radius) var(--radius);
+}
+
+.health-tip-nav-prev,
+.health-tip-nav-next {
+    background: none;
+    border: none;
+    font-size: 0.9rem;
+    color: var(--green-mid);
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.health-tip-nav-prev:hover:not(:disabled),
+.health-tip-nav-next:hover:not(:disabled) {
+    background: var(--green-pale);
+    color: var(--green-dark);
+}
+
+.health-tip-nav-prev:disabled,
+.health-tip-nav-next:disabled {
+    color: var(--cream-dark);
+    cursor: not-allowed;
+}
+
+.health-tip-nav-count {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+}
+
+/* ---- Health Tips (old style) ---- */
 .health-tips {
     display: grid;
     gap: 20px;
