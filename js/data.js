@@ -28,6 +28,14 @@ const siteData = {
             bvid: "BV1kiGB6LEWz",
             isBilibili: true,
             thumb: "images/thumb-person.jpg"
+        },
+        {
+            id: 4,
+            title: "小满·养心",
+            desc: "小满时节养心正当时，数字人讲解夏季中医养生。",
+            bvid: "BV1jTG46iEKV",
+            isBilibili: true,
+            thumb: "images/thumb-person.jpg"
         }
     ],
 
