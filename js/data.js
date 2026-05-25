@@ -11,7 +11,7 @@ const siteData = {
             desc: "数字人讲解中医养生知识，通俗易懂。",
             bvid: "BV1eGLm6eEY1",
             isBilibili: true,
-            thumb: "images/thumb-person.jpg"
+            thumb: "http://i1.hdslb.com/bfs/archive/8055908cff3b6b736e2f9b2a8e372d3268af1fde.jpg"
         },
         {
             id: 2,
@@ -19,7 +19,7 @@ const siteData = {
             desc: "数字人视频作品。",
             bvid: "BV1d3G66gEmm",
             isBilibili: true,
-            thumb: "images/thumb-person.jpg"
+            thumb: "http://i2.hdslb.com/bfs/archive/a4a9bdcc4ce836db280f73f52292928977fdcbd4.jpg"
         },
         {
             id: 3,
@@ -27,7 +27,7 @@ const siteData = {
             desc: "数字人讲解夏季养心知识，简单实用。",
             bvid: "BV1kiGB6LEWz",
             isBilibili: true,
-            thumb: "images/thumb-person.jpg"
+            thumb: "http://i1.hdslb.com/bfs/archive/ffdf0fe727516369755c3f457df3cb470fa22c98.jpg"
         },
         {
             id: 4,
@@ -35,7 +35,7 @@ const siteData = {
             desc: "小满时节养心正当时，数字人讲解夏季中医养生。",
             bvid: "BV1jTG46iEKV",
             isBilibili: true,
-            thumb: "images/thumb-person.jpg"
+            thumb: "http://i2.hdslb.com/bfs/archive/82a0d8ef4a154fb1af8be8e5e30e6d8eb2ebd722.jpg"
         }
     ],
 
