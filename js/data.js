@@ -36,6 +36,14 @@ const siteData = {
             bvid: "BV1jTG46iEKV",
             isBilibili: true,
             thumb: "http://i2.hdslb.com/bfs/archive/82a0d8ef4a154fb1af8be8e5e30e6d8eb2ebd722.jpg"
+        },
+        {
+            id: 5,
+            title: "致熬夜的年轻一代；不熬夜，好处多",
+            desc: "数字人讲解熬夜的危害与早睡的好处，关爱年轻一代健康。",
+            bvid: "BV1W1Gd6AEaT",
+            isBilibili: true,
+            thumb: ""
         }
     ],
 
